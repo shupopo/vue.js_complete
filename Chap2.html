@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js App</title>
+</head>
+<body>
+<div id="app">
+    <div v-html="message"></div>
+    <img v-bind:src="imageSource">
+    <div v-if="isVisible">Now you see me</div>
+    <div v-else> Now you don't</div>
+    <ul>
+        <template v-for="person in people">
+            <li>
+                {{ person }}
+            </li>
+        </template>
+    </ul>
+    <table>
+        <tr v-for="person in people">
+            <td>{{ person.name }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ activeStatus(person) }}</td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://unpkg.com/vue">
+</script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: "<h1>hello!!!</h1>",
+            imageSource: 'http://via.placeholder.com/350x150',
+            isVisible: false,
+            people: [
+                {name: "shupo", email: "www.com",isActive:true},
+                {name: "manaya", email: "eee.com",isActive:true},
+                {name: "tiaki", email: "bbb.com",isActive:false}
+                ],
+        },
+        methods:{
+            activeStatus(person) {
+                return (person.isActive) ? 'Active' : 'Inactive';
+            }
+        }
+    });
+</script>
+</body>
+</html>

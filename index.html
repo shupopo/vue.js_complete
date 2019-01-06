@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js App</title>
+</head>
+<body>
+<div id="app">
+    {{ messageToLower }}
+    <br>
+    {{calculateSalesTax(1000)}}
+</div>
+<script src="https://unpkg.com/vue">
+</script>
+<script type="text/javascript">
+    // JS Code here
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: "HI VUE!",
+            price: 18 + 6,
+            details: ["one", "two", "three"],
+            salesTax: 16
+        },
+        computed: {
+            messageToLower() {
+                return this.message.toLowerCase()
+            }
+        },
+        methods:{
+            calculateSalesTax(price){
+                return Math.round(price*(1+this.salesTax/100))
+            }
+        }
+    });
+</script>
+</body>
+</html>
